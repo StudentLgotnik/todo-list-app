@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { MAIN, CREATE_TODO, EDIT_TODO, VIEW_TODO } from './constants/routes';
+import {Main} from "./components/Main/Main";
+import {CreateTodo} from "./components/Create/CreateTodo";
+import {EditTodo} from "./components/Edit/EditTodo";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+    <BrowserRouter>
+      <Routes>
+        <Route path={MAIN} element={ <Main/> }/>
+        <Route path={CREATE_TODO} element={ <CreateTodo/> }/>
+        <Route path={EDIT_TODO + ':id'} element={ <EditTodo/> }/>
+        <Route path={VIEW_TODO + 'id'} />
+      </Routes>
+    </BrowserRouter>
+);
 
 export default App;
